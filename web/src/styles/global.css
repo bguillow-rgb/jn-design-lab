@@ -146,7 +146,15 @@ li { margin-bottom: 0.5rem; }
 .btn-ghost-light:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; color: #fff; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 0.9rem 1rem; align-items: center; }
 
-/* ---------- header ---------- */
+/* ---------- header ----------
+   Two-row ceremonial header at the top of the page: big centered wordmark
+   (row 1) over a centered bold caps nav line (row 2). On scroll the big
+   wordmark collapses upward and fades while a compact wordmark appears at
+   the left of the nav bar and the whole block tightens into one solid bar.
+   Everything animated is max-height / opacity / transform / font / padding,
+   so the morph tweens smoothly; reduced motion makes it an instant swap
+   (global rule above). Under 1000px it is a single compact row from the
+   start, paired with the off-canvas menu. */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -160,7 +168,7 @@ li { margin-bottom: 0.5rem; }
   background: var(--paper);
   color: var(--ink);
   box-shadow: 0 1px 0 var(--line);
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 .site-name {
   font-family: var(--sans);
@@ -172,7 +180,19 @@ li { margin-bottom: 0.5rem; }
   text-decoration: none;
   white-space: nowrap;
 }
-.site-nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; }
+.header-bar { position: relative; display: flex; align-items: center; }
+.site-name-compact {
+  display: none;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.6rem; }
 .site-nav a {
   font-family: var(--sans);
   font-size: 0.82rem;
@@ -182,6 +202,7 @@ li { margin-bottom: 0.5rem; }
   color: inherit;
   opacity: 0.82;
   text-decoration: none;
+  transition: font-size 0.3s ease, opacity 0.2s ease;
 }
 .site-nav a:hover { opacity: 1; color: inherit; }
 
@@ -190,6 +211,56 @@ body.has-hero .site-header:not(.scrolled) {
   background: transparent;
   color: #fff;
   box-shadow: none;
+}
+
+@media (min-width: 1000px) {
+  /* stacked, ceremonial state */
+  .site-header {
+    display: block;
+    height: auto;
+    text-align: center;
+    padding: 1.7rem var(--bleed-pad) 1.15rem;
+  }
+  .site-name {
+    display: block;
+    max-height: 3rem;
+    overflow: hidden;
+    font-size: 1.55rem;
+    letter-spacing: 0.3em;
+    margin: 0 auto 1rem;
+    opacity: 1;
+    transform: none;
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease,
+      font-size 0.3s ease, margin 0.3s ease;
+  }
+  .header-bar { justify-content: center; }
+  .site-name-compact {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, calc(-50% + 8px));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .site-nav { gap: 0.4rem 2.1rem; }
+  .site-nav a { font-size: 0.95rem; font-weight: 700; }
+
+  /* collapsed into the compact bar */
+  .site-header.scrolled { padding: 1rem var(--bleed-pad); }
+  .site-header.scrolled .site-name {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    margin-bottom: 0;
+  }
+  .site-header.scrolled .site-name-compact {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(0, -50%);
+  }
+  .site-header.scrolled .site-nav a { font-size: 0.82rem; font-weight: 600; }
 }
 
 .nav-toggle {
@@ -257,6 +328,10 @@ body.menu-open { overflow: hidden; }
 
 /* ---------- layout ---------- */
 main { max-width: 56rem; margin: 0 auto; padding: calc(var(--header-h) + 3rem) var(--bleed-pad) 4.5rem; }
+@media (min-width: 1000px) {
+  /* the stacked header is taller than the compact bar */
+  main { padding-top: calc(var(--header-h) + 5.5rem); }
+}
 main.wide { max-width: 88rem; }
 body.has-hero main { padding-top: 0; }
 .full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }

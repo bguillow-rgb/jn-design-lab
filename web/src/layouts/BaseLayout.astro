@@ -53,13 +53,19 @@ const hideFromSearch = noindex || !SITE.launched;
   </head>
   <body class={hero ? 'has-hero' : undefined}>
     <header class="site-header" id="siteHeader">
+      {/* social icon row slot: Joe has no public socials yet.
+          When they exist, a centered icon row goes here, above the wordmark:
+          <div class="header-social"> ...icon links... </div> */}
       <a class="site-name" href={url('/')}>{SITE.name}</a>
-      <nav class="site-nav">
-        {NAV.map((item) => <a href={url(item.href)}>{item.label}</a>)}
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-bar">
+        <a class="site-name-compact" href={url('/')} aria-hidden="true" tabindex="-1">{SITE.name}</a>
+        <nav class="site-nav">
+          {NAV.map((item) => <a href={url(item.href)}>{item.label}</a>)}
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
     <div class="menu-backdrop" id="menuBackdrop"></div>
     <aside class="mobile-menu" id="mobileMenu">
