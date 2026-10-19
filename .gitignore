@@ -1,0 +1,11 @@
+node_modules/
+web/dist/
+web/.astro/
+.astro/
+.env
+.env.*
+!.env.example
+.claude/
+notes/
+.DS_Store
+CLAUDE.md

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../consts';
+---
+<BaseLayout wide title="Ventures" path="/ventures" description="What Joe Neiman has built and what he's buying now: ACV Auctions, DealerClub, franchise dealerships, and airplanes.">
+  <div class="hero-full page-hero full-bleed">
+    <img src={url('/assets/photos/avanti.jpg')} alt="Piaggio Avanti P180 in a hangar" width="1600" height="1200" loading="eager" />
+    <div class="hero-overlay"><h1>Ventures</h1></div>
+  </div>
+
+  <h2>Built</h2>
+  <ul>
+    <li><strong>ACV Auctions</strong>, co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.</li>
+    <li><strong>DealerClub</strong>, founder. The reputation-based wholesale auction. Self-funded, built with the team behind it, acquired by Cars Commerce.</li>
+    <li>Before all of that: a used car dealership in Albany that sold 40+ cars a month, largely on eBay, years before online car sales were normal.</li>
+  </ul>
+
+  <div class="split flip">
+    <div>
+      <h2>Buying now</h2>
+      <p>
+        I'm looking to build a portfolio of franchise car dealerships because I believe
+        in the resiliency of the US auto industry and the overall dependency and cultural
+        stronghold that automobiles provide. I also buy and sell airplanes for fun.
+      </p>
+      <h2>Interested in</h2>
+      <ul>
+        <li>Franchise car dealerships: buying, selling, and brokering.</li>
+        <li>Airplanes worth owning or trading.</li>
+        <li>Early stage companies doing neat things with health and wellness, marketplaces, and transportation.</li>
+        <li>Air-cooled Porsches and other specialty cars and trucks.</li>
+      </ul>
+      <a class="cta" href={url('/contact')}>Bring me a deal</a>
+    </div>
+    <figure>
+      <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" width="1200" height="1600" loading="lazy" />
+    </figure>
+  </div>
+</BaseLayout>

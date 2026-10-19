@@ -1,0 +1,65 @@
+---
+import { SITE, NAV, url } from '../consts';
+import PersonSchema from '../components/schema/PersonSchema.astro';
+import WebSiteSchema from '../components/schema/WebSiteSchema.astro';
+import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  noindex?: boolean;
+  wide?: boolean;
+}
+
+const { title, description = SITE.description, path = '', noindex = false, wide = false } = Astro.props;
+
+const canonical = `${SITE.url}${path}`;
+const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const hideFromSearch = noindex || !SITE.launched;
+---
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    {hideFromSearch && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+
+    {SITE.launched && (
+      <>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={fullTitle} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:url" content={canonical} />
+        <meta property="og:site_name" content={SITE.name} />
+        <PersonSchema />
+        <WebSiteSchema />
+      </>
+    )}
+
+    <Analytics />
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href={url('/')}>{SITE.name}</a>
+      <nav class="site-nav">
+        {NAV.map((item) => <a href={url(item.href)}>{item.label}</a>)}
+      </nav>
+    </header>
+    <main class={wide ? 'wide' : undefined}>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>Joe Neiman</p>
+      <nav>
+        {NAV.map((item) => <a href={url(item.href)}>{item.label}</a>)}
+      </nav>
+    </footer>
+  </body>
+</html>
