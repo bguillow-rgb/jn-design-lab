@@ -8,7 +8,7 @@ import { url } from '../consts';
 const heroSlides = [
   { src: url('/assets/photos/cockpit.jpg'), alt: 'Joe Neiman at the controls of his TBM at sunset, headset on' },
   { src: url('/assets/photos/wing-sunset.jpg'), alt: 'Sunset over the wing at altitude' },
-  { src: url('/assets/photos/joe-porsche-wide.jpg'), alt: 'Joe Neiman standing beside a white air-cooled Porsche 911' },
+  { src: url('/assets/photos/joe-porsche-wide.jpg'), alt: 'Joe Neiman standing beside a white air-cooled Porsche 911', pos: 'center 30%' },
   { src: url('/assets/photos/waco.jpg'), alt: 'Red Waco YMF-5 biplane in a hangar' },
   { src: url('/assets/photos/tbm-door.jpg'), alt: 'Joe Neiman giving a thumbs-up from the open door of his TBM on the ramp' },
 ];
@@ -37,7 +37,7 @@ const heroSlides = [
         <li data-rise>
           <a class="venture-card" href={url('/ventures')}>
             <span class="vc-media">
-              <img src={url('/assets/photos/ipo-day-nasdaq.jpg')} alt="Joe Neiman at the Nasdaq podium on ACV's IPO day" loading="lazy" decoding="async" width="568" height="696" />
+              <img src={url('/assets/photos/ipo-day-nasdaq.jpg')} alt="Joe Neiman at the Nasdaq podium on ACV's IPO day" style="object-position: center 20%;" loading="lazy" decoding="async" width="568" height="696" />
               <span class="vc-name">ACV Auctions</span>
             </span>
             <span class="vc-sub">Online wholesale auto auctions, Buffalo, NY.</span>
@@ -55,7 +55,7 @@ const heroSlides = [
         <li data-rise>
           <a class="venture-card" href={url('/about')}>
             <span class="vc-media">
-              <img src={url('/assets/photos/joe-porsche-lean.jpg')} alt="Joe Neiman leaning on a white Porsche 911 with blue stripes" loading="lazy" decoding="async" width="1800" height="1200" />
+              <img src={url('/assets/photos/joe-porsche-lean.jpg')} alt="Joe Neiman leaning on a white Porsche 911 with blue stripes" style="object-position: center 18%;" loading="lazy" decoding="async" width="1800" height="1200" />
               <span class="vc-name">In Demand Auto</span>
             </span>
             <span class="vc-sub">A used car dealership in Albany that sold 40+ cars a month, largely on eBay.</span>
@@ -64,7 +64,7 @@ const heroSlides = [
         <li data-rise>
           <a class="venture-card" href={url('/ventures')}>
             <span class="vc-media">
-              <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" loading="lazy" decoding="async" width="1200" height="1600" />
+              <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" style="object-position: center 35%;" loading="lazy" decoding="async" width="1200" height="1600" />
               <span class="vc-name">Buying now</span>
             </span>
             <span class="vc-sub">Franchise car dealerships: buying, selling, and brokering.</span>
@@ -77,7 +77,7 @@ const heroSlides = [
 
   <!-- 3. dark feature band: the book + speaking -->
   <section class="band band-dark on-dark full-bleed">
-    <img class="band-bg" src={url('/assets/photos/studio-set.jpg')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <img class="band-bg" src={url('/assets/photos/studio-set.jpg')} alt="" style="object-position: center 8%;" aria-hidden="true" loading="lazy" decoding="async" />
     <div class="band-scrim"></div>
     <div class="band-inner">
       <div class="measure">
@@ -114,7 +114,7 @@ const heroSlides = [
 
   <!-- 5. dark band with floating white about card -->
   <section class="band band-dark on-dark full-bleed">
-    <img class="band-bg" src={url('/assets/photos/flying-headset.jpg')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <img class="band-bg" src={url('/assets/photos/flying-headset.jpg')} alt="" style="object-position: center 5%;" aria-hidden="true" loading="lazy" decoding="async" />
     <div class="band-scrim"></div>
     <div class="band-inner">
       <div class="about-card" data-rise>

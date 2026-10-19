@@ -14,6 +14,8 @@
 interface Slide {
   src: string;
   alt: string;
+  /** per-image object-position so faces keep clear margin in the cover crop */
+  pos?: string;
 }
 interface Props {
   slides: Slide[];
@@ -26,11 +28,11 @@ const [first, ...rest] = slides;
 ---
 <section class="hero-rotator full-bleed" data-interval={interval}>
   <div class="slide active">
-    <img src={first.src} alt={first.alt} loading="eager" fetchpriority="high" decoding="async" />
+    <img src={first.src} alt={first.alt} loading="eager" fetchpriority="high" decoding="async" style={first.pos ? `object-position: ${first.pos};` : undefined} />
   </div>
   {!videoSrc && rest.map((s) => (
     <div class="slide">
-      <img data-src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+      <img data-src={s.src} alt={s.alt} loading="lazy" decoding="async" style={s.pos ? `object-position: ${s.pos};` : undefined} />
     </div>
   ))}
   {videoSrc && (

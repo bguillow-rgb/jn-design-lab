@@ -22,8 +22,10 @@ const linkedIn = SITE.sameAs[0];
     <li>Anything Merici-related.</li>
   </ul>
 
-  <figure class="media-band full-bleed" data-rise>
-    <img src={url('/assets/photos/joe-911-vertical.jpg')} alt="Joe Neiman standing beside his white Porsche 911" width="738" height="1600" loading="lazy" style="object-position: center 30%;" />
+  {/* extreme-portrait shot: shown at its natural aspect, contained, instead
+      of force-cropped into a wide band */}
+  <figure class="prose" data-rise style="max-width: 420px;">
+    <img src={url('/assets/photos/joe-911-vertical.jpg')} alt="Joe Neiman standing beside his white Porsche 911" width="738" height="1600" loading="lazy" />
   </figure>
 
   <!-- closer -->
