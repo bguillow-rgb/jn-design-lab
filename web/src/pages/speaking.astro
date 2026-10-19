@@ -2,33 +2,42 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../consts';
 ---
-<BaseLayout wide title="Speaking" path="/speaking" description="Joe Neiman speaks about entrepreneurship, recognizing opportunity, and building a business without wrecking your health. Fireside chats preferred.">
-  <header class="page-title">
-    <span class="eyebrow">Joe Neiman</span>
-    <h1>Speaking</h1>
-  </header>
+<BaseLayout wide hero title="Speaking" path="/speaking" description="Joe Neiman speaks about entrepreneurship, recognizing opportunity, and building a business without wrecking your health. Fireside chats preferred.">
+  <div class="hero-full page-hero full-bleed">
+    <img src={url('/assets/photos/studio-set.jpg')} alt="Joe Neiman on a video set before a recording" width="1600" height="1200" loading="eager" />
+    <div class="hero-overlay"><span class="eyebrow">Joe Neiman</span><h1>Speaking</h1></div>
+  </div>
 
-  <p class="lede">
-    I say yes to a few rooms a year, where the audience wants real stories from
-    somebody who has actually been through it, and where my time does some good.
-  </p>
+  <section class="chapter prose" data-rise>
+    <p class="lede">
+      I say yes to a few rooms a year, where the audience wants real stories from
+      somebody who has actually been through it, and where my time does some good.
+    </p>
+  </section>
 
-  <div class="split">
-    <div>
-      <h2>What I talk about</h2>
-      <ul>
-        <li>Recognizing opportunity, and having the confidence to go after it.</li>
-        <li>Building and scaling companies: from a yellow legal pad to a $5B IPO, with every mistake included.</li>
-        <li>What the grind actually costs. Stress, health, and building a business without putting the rest of your life on hold.</li>
-      </ul>
-      <h2>Where I've done this</h2>
-      <ul>
-        <li>Startup Grind Buffalo, fireside chat on building ACV.</li>
-        <li>43North's Latitude podcast, taped live in Buffalo.</li>
-        <li>Industry panels, including Used Carpalooza.</li>
-        <li>NEXT with Michael Sonnenfeldt, on stress, meditation, and reinvention.</li>
-      </ul>
-      <h2>Format</h2>
+  <section class="chapter prose" data-rise>
+    <h2>What I talk about</h2>
+    <ul class="list-ruled">
+      <li>Recognizing opportunity, and having the confidence to go after it.</li>
+      <li>Building and scaling companies: from a yellow legal pad to a $5B IPO, with every mistake included.</li>
+      <li>What the grind actually costs. Stress, health, and building a business without putting the rest of your life on hold.</li>
+    </ul>
+  </section>
+
+  <section class="chapter prose" data-rise>
+    <h2>Where I've done this</h2>
+    <ul class="list-ruled">
+      <li>Startup Grind Buffalo, fireside chat on building ACV.</li>
+      <li>43North's Latitude podcast, taped live in Buffalo.</li>
+      <li>Industry panels, including Used Carpalooza.</li>
+      <li>NEXT with Michael Sonnenfeldt, on stress, meditation, and reinvention.</li>
+    </ul>
+  </section>
+
+  <!-- closer: format + the ask -->
+  <section class="band band-light closer-band full-bleed" data-rise>
+    <div class="band-inner">
+      <span class="eyebrow">Format</span>
       <p>
         Fireside chats and moderated conversations are where I'm best. I don't have a
         canned deck, and honestly the rooms that get the most out of it are the ones
@@ -36,8 +45,5 @@ import { url } from '../consts';
       </p>
       <a class="cta cta-blue" href={url('/contact')}>Book a conversation</a>
     </div>
-    <figure>
-      <img src={url('/assets/photos/studio-set.jpg')} alt="Joe Neiman on a video set before a recording" width="1600" height="1200" loading="lazy" />
-    </figure>
-  </div>
+  </section>
 </BaseLayout>

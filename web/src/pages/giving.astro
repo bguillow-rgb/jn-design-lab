@@ -8,17 +8,22 @@ import { url } from '../consts';
     <h1>Giving</h1>
   </header>
 
-  <div class="split">
+  <!-- cause: Merici -->
+  <section class="chapter prose" data-rise>
+    <h2>Merici</h2>
+    <p>
+      Merici is my primary cause. Merici is dismantling global child trafficking
+      through a proven effective process, including rehabilitation of the victims.
+      I have spent a fair amount of time with the founder, Om, who has dedicated his
+      life to this mission. Eliminating this pure evil and giving these children a
+      second chance helps to alleviate trauma that holds back future generations.
+      At this point my role is philanthropy through investment and collaboration.
+    </p>
+  </section>
+
+  <!-- cause: SkyHope, with the plane where it belongs -->
+  <div class="split flip" data-rise>
     <div>
-      <h2>Merici</h2>
-      <p>
-        Merici is my primary cause. Merici is dismantling global child trafficking
-        through a proven effective process, including rehabilitation of the victims.
-        I have spent a fair amount of time with the founder, Om, who has dedicated his
-        life to this mission. Eliminating this pure evil and giving these children a
-        second chance helps to alleviate trauma that holds back future generations.
-        At this point my role is philanthropy through investment and collaboration.
-      </p>
       <h2>SkyHope</h2>
       <p>
         I'm starting to fly Angel Flight missions for SkyHope, using the plane and the
@@ -30,4 +35,15 @@ import { url } from '../consts';
       <img src={url('/assets/photos/tbm-door.jpg')} alt="Joe Neiman giving a thumbs-up from the open door of his TBM on the ramp" width="1200" height="1600" loading="lazy" />
     </figure>
   </div>
+
+  <!-- closer -->
+  <section class="band band-light closer-band full-bleed" data-rise>
+    <div class="band-inner">
+      <span class="eyebrow">Giving</span>
+      <p>Anything Merici-related.</p>
+      <div class="btn-row">
+        <a class="btn" href={url('/contact')}>Contact</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

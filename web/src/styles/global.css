@@ -575,6 +575,132 @@ body.has-hero .hero-full { margin-top: 0; }
 .page-hero img { height: clamp(380px, 62vh, 680px); object-position: center 30%; }
 .page-hero + * { margin-top: 2.6rem; }
 
+/* ---------- editorial bands (interior pages) ----------
+   A page is a sequence of designed bands: contained prose chapters on a
+   ~700px measure, pull-quote moments between chapters, full-width photo
+   bands, uniform gallery rows and photo pairs, and a designed closer. */
+.prose { max-width: 46rem; margin-left: auto; margin-right: auto; }
+.chapter { margin: clamp(2.6rem, 5.5vw, 4.2rem) auto; }
+.chapter > h2:first-child { margin-top: 0; }
+
+.pullquote {
+  max-width: 50rem;
+  margin: clamp(2.8rem, 6vw, 4.6rem) auto;
+  padding: clamp(1.8rem, 3.5vw, 2.6rem) 1rem;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.pullquote p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.38;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.media-band { margin: clamp(2.8rem, 6vw, 4.6rem) 0; }
+.media-band img { width: 100%; height: min(62vh, 580px); object-fit: cover; }
+.media-band figcaption { padding: 0 var(--bleed-pad); text-align: center; }
+
+.gallery-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+  margin: 2rem 0;
+}
+.gallery-row figure { margin: 0; }
+.gallery-row img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3rem;
+  align-items: start;
+  margin: 2rem 0;
+}
+.photo-pair figure { margin: 0; }
+.photo-pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 720px) {
+  .gallery-row { grid-template-columns: 1fr; }
+  .photo-pair { grid-template-columns: 1fr; }
+}
+
+/* duotone media block, reusable outside the card grid */
+.duotone-media {
+  display: block;
+  position: relative;
+  aspect-ratio: 2.44 / 1;
+  overflow: hidden;
+  background: var(--night);
+}
+.duotone-media img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.92);
+}
+.duotone-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(10, 11, 13, 0.55) 0%, rgba(10, 11, 13, 0.08) 55%),
+    rgba(242, 107, 43, 0.18);
+}
+
+/* venture rows: media + facts, alternating sides */
+.venture-row {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: center;
+  margin: clamp(2.4rem, 5vw, 3.6rem) 0;
+}
+.venture-row.flip > .vr-media { order: 1; }
+.venture-row .vr-media { margin: 0; }
+.venture-row h2 { margin-top: 0; }
+.venture-row .vr-kicker {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 820px) {
+  .venture-row, .venture-row.flip { grid-template-columns: 1fr; gap: 1.2rem; }
+  .venture-row.flip > .vr-media { order: 0; }
+}
+
+/* ruled list: designed rows instead of bare bullets */
+.list-ruled { list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.list-ruled li {
+  margin: 0;
+  padding: 1rem 0.2rem;
+  border-top: 1px solid var(--line);
+}
+.list-ruled li:last-child { border-bottom: 1px solid var(--line); }
+.list-ruled strong { font-family: var(--sans); }
+
+/* designed page closer */
+.closer-band { text-align: center; }
+.closer-band .band-inner { max-width: 54rem; }
+.closer-band h2 { margin-top: 0; }
+.closer-band .btn-row { justify-content: center; }
+
 /* ---------- cards / misc ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .card-grid li { margin: 0; }

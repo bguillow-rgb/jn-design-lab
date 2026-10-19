@@ -8,24 +8,33 @@ import { url } from '../consts';
     <h1>Writing</h1>
   </header>
 
-  <div class="split">
-    <div>
-      <p class="lede">
-        One substantial piece at a time: a decision I just made, an opportunity I
-        chased or passed on, a story from the auction business or the hangar, and
-        what each one taught me.
-      </p>
-      <p>
-        The essays are on their way, and they all feed the bigger project, which is a
-        book about entrepreneurship built from what actually happened to me, the wins
-        and the mistakes both.
-      </p>
+  <section class="chapter prose" data-rise>
+    <p class="lede">
+      One substantial piece at a time: a decision I just made, an opportunity I
+      chased or passed on, a story from the auction business or the hangar, and
+      what each one taught me.
+    </p>
+    <p>
+      The essays are on their way, and they all feed the bigger project, which is a
+      book about entrepreneurship built from what actually happened to me, the wins
+      and the mistakes both.
+    </p>
+  </section>
+
+  <figure class="media-band full-bleed" data-rise>
+    <img src={url('/assets/photos/joe-911-roof.jpg')} alt="Joe Neiman leaning on the roof of his white Porsche 911" width="1800" height="1200" loading="lazy" />
+  </figure>
+
+  <!-- closer -->
+  <section class="band band-light closer-band full-bleed" data-rise>
+    <div class="band-inner">
+      <span class="eyebrow">Writing</span>
       <p class="muted">
         Want the pieces as they come out? A newsletter signup will live here.
       </p>
+      <div class="btn-row">
+        <a class="btn" href={url('/contact')}>Contact</a>
+      </div>
     </div>
-    <figure>
-      <img src={url('/assets/photos/joe-911-roof.jpg')} alt="Joe Neiman leaning on the roof of his white Porsche 911" width="1800" height="1200" loading="eager" />
-    </figure>
-  </div>
+  </section>
 </BaseLayout>

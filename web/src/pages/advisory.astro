@@ -8,33 +8,49 @@ import { url } from '../consts';
     <h1>Advisory and mentoring</h1>
   </header>
 
-  <div class="split narrow-img">
+  <section class="chapter prose" data-rise>
+    <p class="lede">
+      Mostly I just dabble and get pulled into things in a very informal way: a
+      founder who needs a gut check, a dealer weighing a sale, somebody staring at a
+      term sheet. The areas where I can actually help are startup scaling,
+      marketplaces, the auto dealer and used car business, and general aviation.
+    </p>
+  </section>
+
+  <blockquote class="pullquote" data-rise>
+    <p>&ldquo;Everything needs a soul. People are not robots.&rdquo;</p>
+    <cite>Joe Neiman</cite>
+  </blockquote>
+
+  <div class="split flip" data-rise>
     <div>
-      <p class="lede">
-        Mostly I just dabble and get pulled into things in a very informal way: a
-        founder who needs a gut check, a dealer weighing a sale, somebody staring at a
-        term sheet. The areas where I can actually help are startup scaling,
-        marketplaces, the auto dealer and used car business, and general aviation.
-      </p>
       <h2>How I think about it</h2>
       <p>
         I was on the other side of this for years. The advice that actually helped me
         came from people who had done the thing themselves and would tell me the truth
         about it, and that's the kind I try to give.
       </p>
+      <h2>Current roles</h2>
+      <ul class="list-ruled">
+        <li><strong>FoodNerd</strong>, advisor and mentor.</li>
+      </ul>
+    </div>
+    <figure style="max-width: 420px;">
+      <img src={url('/assets/photos/joe-headshot.jpg')} alt="Joe Neiman headshot" loading="lazy" />
+    </figure>
+  </div>
+
+  <!-- closer -->
+  <section class="band band-light closer-band full-bleed" data-rise>
+    <div class="band-inner">
+      <span class="eyebrow">Advisory</span>
       <p>
         If you're building something in my lanes and want a straight answer,
         <a href={url('/contact')}>reach out</a>.
       </p>
+      <div class="btn-row">
+        <a class="btn" href={url('/contact')}>Contact</a>
+      </div>
     </div>
-    <div>
-      <figure style="max-width: 360px;">
-        <img src={url('/assets/photos/joe-headshot-brick.jpg')} alt="Joe Neiman headshot against a brick wall" width="754" height="754" loading="eager" />
-      </figure>
-      <h2 style="margin-top: 1rem;">Current roles</h2>
-      <ul>
-        <li><strong>FoodNerd</strong>, advisor and mentor.</li>
-      </ul>
-    </div>
-  </div>
+  </section>
 </BaseLayout>

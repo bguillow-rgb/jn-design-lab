@@ -8,23 +8,69 @@ import { url } from '../consts';
     <div class="hero-overlay"><span class="eyebrow">Joe Neiman</span><h1>Ventures</h1></div>
   </div>
 
-  <h2>Built</h2>
-  <ul>
-    <li><strong>ACV Auctions</strong>, co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.</li>
-    <li><strong>DealerClub</strong>, founder. The reputation-based wholesale auction. Self-funded, built with the team behind it, acquired by Cars Commerce.</li>
-    <li>Before all of that: a used car dealership in Albany that sold 40+ cars a month, largely on eBay, years before online car sales were normal.</li>
-  </ul>
-
-  <div class="split flip">
+  <!-- built: each venture as a designed row, sides alternating -->
+  <div class="venture-row" data-rise>
+    <figure class="vr-media duotone-media">
+      <img src={url('/assets/photos/ipo-day-nasdaq.jpg')} alt="Joe Neiman at the Nasdaq podium on ACV's IPO day" width="568" height="696" loading="lazy" />
+    </figure>
     <div>
+      <span class="vr-kicker">Built</span>
+      <h2>ACV Auctions</h2>
+      <p>
+        Co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a
+        month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.
+      </p>
+    </div>
+  </div>
+
+  <div class="venture-row flip" data-rise>
+    <figure class="vr-media duotone-media">
+      <img src={url('/assets/photos/nada-cars-commerce.jpg')} alt="Joe Neiman and the team at the NADA Show announcement that DealerClub is now part of Cars Commerce" width="1600" height="1200" loading="lazy" />
+    </figure>
+    <div>
+      <span class="vr-kicker">Built</span>
+      <h2>DealerClub</h2>
+      <p>
+        Founder. The reputation-based wholesale auction. Self-funded, built with
+        the team behind it, acquired by Cars Commerce.
+      </p>
+    </div>
+  </div>
+
+  <div class="venture-row" data-rise>
+    <figure class="vr-media duotone-media">
+      <img src={url('/assets/photos/joe-headshot-brick.jpg')} alt="Joe Neiman headshot against a brick wall" width="754" height="754" loading="lazy" />
+    </figure>
+    <div>
+      <span class="vr-kicker">Before all of that</span>
+      <h2>In Demand Auto</h2>
+      <p>
+        A used car dealership in Albany that sold 40+ cars a month, largely on
+        eBay, years before online car sales were normal.
+      </p>
+    </div>
+  </div>
+
+  <div class="venture-row flip" data-rise>
+    <figure class="vr-media duotone-media">
+      <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" width="1200" height="1600" loading="lazy" />
+    </figure>
+    <div>
+      <span class="vr-kicker">Next</span>
       <h2>Buying now</h2>
       <p>
         I'm looking to build a portfolio of franchise car dealerships because I believe
         in the resiliency of the US auto industry and the overall dependency and cultural
         stronghold that automobiles provide. I also buy and sell airplanes for fun.
       </p>
-      <h2>Interested in</h2>
-      <ul>
+    </div>
+  </div>
+
+  <!-- closer: the ask -->
+  <section class="band band-light closer-band full-bleed" data-rise>
+    <div class="band-inner">
+      <span class="eyebrow">Interested in</span>
+      <ul class="list-ruled" style="text-align: left;">
         <li>Franchise car dealerships: buying, selling, and brokering.</li>
         <li>Airplanes worth owning or trading.</li>
         <li>Early stage companies doing neat things with health and wellness, marketplaces, and transportation.</li>
@@ -32,8 +78,5 @@ import { url } from '../consts';
       </ul>
       <a class="cta cta-blue" href={url('/contact')}>Bring me a deal</a>
     </div>
-    <figure>
-      <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" width="1200" height="1600" loading="lazy" />
-    </figure>
-  </div>
+  </section>
 </BaseLayout>
