@@ -1,0 +1,75 @@
+---
+// Full-height rotating image reel, video-ready.
+//
+// - slides rotate every `interval` ms with a crossfade and a subtle
+//   Ken Burns zoom (CSS, desktop only, prefers-reduced-motion aware)
+// - the first frame is the LCP image: eager, fetchpriority=high, and the
+//   page should also preload it from a <link rel="preload"> in <slot name="head">
+// - slides after the first carry data-src and are only fetched when the
+//   rotation actually starts, so phones and reduced-motion users download
+//   exactly one image
+// - pass `videoSrc` later to swap the reel for a muted looping video; the
+//   first slide stays rendered underneath as the poster frame, and reduced
+//   motion or mobile removes the video so the poster shows instead
+interface Slide {
+  src: string;
+  alt: string;
+}
+interface Props {
+  slides: Slide[];
+  videoSrc?: string;
+  videoType?: string;
+  interval?: number;
+}
+const { slides, videoSrc, videoType = 'video/mp4', interval = 8000 } = Astro.props;
+const [first, ...rest] = slides;
+---
+<section class="hero-rotator full-bleed" data-interval={interval}>
+  <div class="slide active">
+    <img src={first.src} alt={first.alt} loading="eager" fetchpriority="high" decoding="async" />
+  </div>
+  {!videoSrc && rest.map((s) => (
+    <div class="slide">
+      <img data-src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+    </div>
+  ))}
+  {videoSrc && (
+    <video autoplay muted loop playsinline preload="metadata" poster={first.src} aria-hidden="true" tabindex="-1">
+      <source src={videoSrc} type={videoType} />
+    </video>
+  )}
+  <div class="hero-scrim"></div>
+  <div class="hero-caption">
+    <slot />
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector('.hero-rotator');
+  if (hero) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const small = window.matchMedia('(max-width: 999px)').matches;
+    const video = hero.querySelector('video');
+
+    if (video && (reduce || small)) {
+      // static poster frame instead of motion
+      video.remove();
+    }
+
+    const slides = Array.from(hero.querySelectorAll('.slide'));
+    if (!video && slides.length > 1 && !reduce && !small) {
+      // hydrate the deferred frames, then rotate
+      slides.forEach((s) => {
+        const img = s.querySelector('img');
+        if (img && img.dataset.src && !img.src) img.src = img.dataset.src;
+      });
+      const interval = parseInt(hero.dataset.interval || '8000', 10);
+      let i = 0;
+      setInterval(() => {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+      }, interval);
+    }
+  }
+</script>

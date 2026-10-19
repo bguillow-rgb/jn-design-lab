@@ -1,57 +1,167 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroRotator from '../components/HeroRotator.astro';
 import { url } from '../consts';
+
+// Hero reel. Swap to video later by passing videoSrc={url('/assets/reel.mp4')}
+// to HeroRotator; the first slide stays as the poster frame.
+const heroSlides = [
+  { src: url('/assets/photos/cockpit.jpg'), alt: 'Joe Neiman at the controls of his TBM at sunset, headset on' },
+  { src: url('/assets/photos/wing-sunset.jpg'), alt: 'Sunset over the wing at altitude' },
+  { src: url('/assets/photos/joe-porsche-wide.jpg'), alt: 'Joe Neiman standing beside a white air-cooled Porsche 911' },
+  { src: url('/assets/photos/waco.jpg'), alt: 'Red Waco YMF-5 biplane in a hangar' },
+  { src: url('/assets/photos/tbm-door.jpg'), alt: 'Joe Neiman giving a thumbs-up from the open door of his TBM on the ramp' },
+];
 ---
-<BaseLayout path="" wide>
-  <div class="hero-full full-bleed">
-    <img src={url('/assets/photos/cockpit.jpg')} alt="Joe Neiman at the controls of his TBM at sunset, headset on" width="1400" height="1274" loading="eager" />
-    <div class="hero-overlay">
-      <h1>Joe Neiman</h1>
-      <p class="lede">
-        I'm an average guy who has been able to achieve some pretty incredible
-        outcomes through a combination of thinking big, trusting my gut, learning
-        from failures and mistakes, pushing the boundaries of what is reasonable
-        or realistic, trying hard, and plenty of luck along the way.
-      </p>
+<BaseLayout path="" wide hero>
+  <link slot="head" rel="preload" as="image" href={heroSlides[0].src} fetchpriority="high" />
+
+  <!-- 1. full-height rotating hero -->
+  <HeroRotator slides={heroSlides}>
+    <h1>Joe Neiman</h1>
+    <p class="lede">
+      I'm an average guy who has been able to achieve some pretty incredible
+      outcomes through a combination of thinking big, trusting my gut, learning
+      from failures and mistakes, pushing the boundaries of what is reasonable
+      or realistic, trying hard, and plenty of luck along the way.
+    </p>
+    <a class="btn btn-ghost-light" href={url('/contact')}>Contact</a>
+  </HeroRotator>
+
+  <!-- 2. ventures grid, duotone cards -->
+  <section class="band band-light full-bleed">
+    <div class="band-inner">
+      <span class="eyebrow" data-rise>Ventures</span>
+      <h2 style="margin-top: 0;" data-rise>Around here</h2>
+      <ul class="venture-grid">
+        <li data-rise>
+          <a class="venture-card" href={url('/ventures')}>
+            <span class="vc-media">
+              <img src={url('/assets/photos/ipo-day-nasdaq.jpg')} alt="Joe Neiman at the Nasdaq podium on ACV's IPO day" loading="lazy" decoding="async" width="568" height="696" />
+              <span class="vc-name">ACV Auctions</span>
+            </span>
+            <span class="vc-sub">Online wholesale auto auctions, Buffalo, NY.</span>
+          </a>
+        </li>
+        <li data-rise>
+          <a class="venture-card" href={url('/ventures')}>
+            <span class="vc-media">
+              <img src={url('/assets/photos/nada-cars-commerce.jpg')} alt="Joe Neiman and the team at the NADA Show announcement that DealerClub is now part of Cars Commerce" loading="lazy" decoding="async" width="1600" height="1200" />
+              <span class="vc-name">DealerClub</span>
+            </span>
+            <span class="vc-sub">The reputation-based wholesale auction.</span>
+          </a>
+        </li>
+        <li data-rise>
+          <a class="venture-card" href={url('/about')}>
+            <span class="vc-media">
+              <img src={url('/assets/photos/joe-porsche-lean.jpg')} alt="Joe Neiman leaning on a white Porsche 911 with blue stripes" loading="lazy" decoding="async" width="1800" height="1200" />
+              <span class="vc-name">In Demand Auto</span>
+            </span>
+            <span class="vc-sub">A used car dealership in Albany that sold 40+ cars a month, largely on eBay.</span>
+          </a>
+        </li>
+        <li data-rise>
+          <a class="venture-card" href={url('/ventures')}>
+            <span class="vc-media">
+              <img src={url('/assets/photos/cessna-ttx.jpg')} alt="Joe Neiman on the ramp with a Cessna TTx" loading="lazy" decoding="async" width="1200" height="1600" />
+              <span class="vc-name">Buying now</span>
+            </span>
+            <span class="vc-sub">Franchise car dealerships: buying, selling, and brokering.</span>
+          </a>
+        </li>
+      </ul>
+      <a class="btn btn-ghost" href={url('/ventures')} data-rise>Ventures</a>
     </div>
-  </div>
+  </section>
 
-  <div class="split">
-    <div>
-      <p>
-        I started buying and selling cars in my parents' driveway at 15 years old.
-        That turned into a dealership, then into co-founding
-        <a href={url('/about')}>ACV Auctions</a>, and later founding DealerClub.
-        These days I fly, I look for good deals, I support causes I believe in, and
-        I'm working on turning two decades of lessons into a book.
-      </p>
-      <h2>What I'm looking for</h2>
-      <p>
-        I'm building a portfolio of franchise car dealerships because I believe in the
-        resiliency of the US auto industry and the cultural stronghold that automobiles
-        hold. I buy and sell airplanes. I'm interested in early stage companies doing
-        neat things with health and wellness, marketplaces, and transportation, and I
-        am always interested in air-cooled Porsches and other specialty cars and trucks.
-        If you've got one of those, <a href={url('/contact')}>I want to hear about it</a>.
-      </p>
-      <a class="cta" href={url('/contact')}>Bring me a deal</a>
+  <!-- 3. dark feature band: the book + speaking -->
+  <section class="band band-dark on-dark full-bleed">
+    <img class="band-bg" src={url('/assets/photos/studio-set.jpg')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div class="band-scrim"></div>
+    <div class="band-inner">
+      <div class="measure">
+        <span class="eyebrow gold" data-rise>Writing and speaking</span>
+        <h2 style="margin-top: 0;" data-rise>Essays on the way, and eventually the book.</h2>
+        <p data-rise>
+          I say yes to a few rooms a year, where the audience wants real stories from
+          somebody who has actually been through it, and where my time does some good.
+        </p>
+        <div class="btn-row" data-rise>
+          <a class="btn btn-ghost-light" href={url('/writing')}>Writing</a>
+          <a class="btn btn-ghost-light" href={url('/speaking')}>Speaking</a>
+        </div>
+      </div>
     </div>
-    <figure>
-      <img src={url('/assets/photos/joe-porsche-wide.jpg')} alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="lazy" />
-    </figure>
-  </div>
+  </section>
 
-  <figure class="full-bleed" style="margin: 2.5rem 0 0;">
-    <img src={url('/assets/photos/wing-sunset.jpg')} alt="Sunset over the wing at altitude" width="1800" height="1350" loading="lazy" style="width: 100%; height: min(46vh, 480px); object-fit: cover; border-radius: 0;" />
-  </figure>
+  <!-- 4. gold quote band -->
+  <section class="band band-gold full-bleed">
+    <div class="band-inner">
+      <blockquote data-rise>
+        &ldquo;Discipline is not a punishment. It is actually the key that unlocks
+        your freedom and ability to pursue and accomplish the goals you desire to
+        achieve.&rdquo;
+      </blockquote>
+      <cite data-rise>Joe Neiman</cite>
+      <div class="btn-row" data-rise>
+        <a class="btn" href={url('/about')}>About</a>
+        <a class="btn btn-ghost" href={url('/giving')}>Giving</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="band" style="border-top: 0;">
-    <h2>Around here</h2>
-    <ul class="card-grid">
-      <li><a href={url('/about')}><span class="card-title">The story</span><span class="card-sub">The $35 Honda Civic, the dealership, ACV, DealerClub, and the health battle that ran underneath all of it.</span></a></li>
-      <li><a href={url('/giving')}><span class="card-title">Giving</span><span class="card-sub">Where the money and the flying go.</span></a></li>
-      <li><a href={url('/speaking')}><span class="card-title">Speaking</span><span class="card-sub">The handful of talks I say yes to.</span></a></li>
-      <li><a href={url('/writing')}><span class="card-title">Writing</span><span class="card-sub">Essays on the way, and eventually the book.</span></a></li>
-    </ul>
-  </div>
+  <!-- 5. dark band with floating white about card -->
+  <section class="band band-dark on-dark full-bleed">
+    <img class="band-bg" src={url('/assets/photos/flying-headset.jpg')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div class="band-scrim"></div>
+    <div class="band-inner">
+      <div class="about-card" data-rise>
+        <div class="ac-text">
+          <span class="eyebrow">About</span>
+          <p class="lede">
+            I grew up outside Albany, New York, in a town nobody has heard of. I learned
+            the value of hard work early on through a combination of manual labor as a
+            landscaper and construction worker and mechanic, as well as buying and selling
+            cars in my parents' driveway starting at 15 years old.
+          </p>
+          <p>
+            I started buying and selling cars in my parents' driveway at 15 years old.
+            That turned into a dealership, then into co-founding
+            <a href={url('/about')}>ACV Auctions</a>, and later founding DealerClub.
+            These days I fly, I look for good deals, I support causes I believe in, and
+            I'm working on turning two decades of lessons into a book.
+          </p>
+          <a class="btn" href={url('/about')}>The story</a>
+        </div>
+        <figure>
+          <img src={url('/assets/photos/joe-portrait.jpg')} alt="Portrait of Joe Neiman" loading="lazy" decoding="async" width="1066" height="1600" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. conversion section: the ask -->
+  <section class="band band-light full-bleed">
+    <div class="band-inner">
+      <div class="split flip">
+        <div>
+          <span class="eyebrow" data-rise>Contact</span>
+          <h2 data-rise>What I'm looking for</h2>
+          <p data-rise>
+            I'm building a portfolio of franchise car dealerships because I believe in the
+            resiliency of the US auto industry and the cultural stronghold that automobiles
+            hold. I buy and sell airplanes. I'm interested in early stage companies doing
+            neat things with health and wellness, marketplaces, and transportation, and I
+            am always interested in air-cooled Porsches and other specialty cars and trucks.
+            If you've got one of those, <a href={url('/contact')}>I want to hear about it</a>.
+          </p>
+          <a class="cta cta-blue" href={url('/contact')} data-rise>Bring me a deal</a>
+        </div>
+        <figure data-rise>
+          <img src={url('/assets/photos/joe-porsche-wide.jpg')} alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

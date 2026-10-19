@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../consts';
 ---
-<BaseLayout wide title="About" path="/about" description="Joe Neiman's story: flipping cars at 15, co-founding ACV Auctions through its $5B IPO, founding DealerClub, flying, and healing.">
+<BaseLayout wide hero title="About" path="/about" description="Joe Neiman's story: flipping cars at 15, co-founding ACV Auctions through its $5B IPO, founding DealerClub, flying, and healing.">
   <div class="hero-full page-hero full-bleed">
     <img src={url('/assets/photos/joe-porsche-lean.jpg')} alt="Joe Neiman leaning on a white Porsche 911 with blue stripes" width="1800" height="1200" loading="eager" style="object-position: center 10%;" />
-    <div class="hero-overlay"><h1>About</h1></div>
+    <div class="hero-overlay"><span class="eyebrow">The story</span><h1>About</h1></div>
   </div>
 
   <div class="split">
@@ -33,7 +33,7 @@ import { url } from '../consts';
   </div>
 
   <h2>Lemons into lemonade</h2>
-  <p>
+  <p class="two-col">
     After college I started a dealership with a friend. I knew better, I ignored
     my gut, and eleven months later he skipped town and left me about $100,000 in
     the hole. Over the next four years I rebuilt from nothing into a former Chevy
@@ -79,7 +79,7 @@ import { url } from '../consts';
   </div>
 
   <h2>The health story</h2>
-  <p>
+  <p class="two-col">
     I'm an open book on this one. Ulcerative colitis showed up at 19 and stayed
     with me, on and off, for more than 15 years. I ran down every rabbit hole
     there is. My experience and my truth is that my disease was driven by
@@ -115,7 +115,7 @@ import { url } from '../consts';
       <figcaption>At altitude.</figcaption>
     </figure>
   </div>
-  <p>
+  <p class="two-col">
     In five years I went from zero hours to more than a thousand, and a commercial
     instrument multi-engine certificate. The two extremes of my hangar say it all:
     an open-cockpit Waco biplane and a Piaggio Avanti. Flying my family from
