@@ -249,6 +249,8 @@ body.has-hero .site-header:not(.scrolled) {
 
   /* collapsed into the compact bar */
   .site-header.scrolled { padding: 1rem var(--bleed-pad); }
+  /* keep the centered nav clear of the absolute-left compact wordmark */
+  .site-header.scrolled .header-bar { padding: 0 10.5rem; }
   .site-header.scrolled .site-name {
     max-height: 0;
     opacity: 0;
@@ -261,6 +263,12 @@ body.has-hero .site-header:not(.scrolled) {
     transform: translate(0, -50%);
   }
   .site-header.scrolled .site-nav a { font-size: 0.82rem; font-weight: 600; }
+}
+
+/* narrower desktops: tighten the compact bar's nav so it clears the wordmark */
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .site-header.scrolled .site-nav { gap: 0.4rem 1.1rem; }
+  .site-header.scrolled .site-nav a { font-size: 0.78rem; letter-spacing: 0.07em; }
 }
 
 .nav-toggle {
