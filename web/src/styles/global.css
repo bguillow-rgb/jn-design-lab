@@ -383,7 +383,7 @@ body.has-hero main { padding-top: 0; }
 .hero-rotator .slide {
   position: absolute; inset: 0;
   opacity: 0;
-  transition: opacity 1.4s ease;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-rotator .slide.active { opacity: 1; }
 .hero-rotator .slide img,
@@ -393,11 +393,16 @@ body.has-hero main { padding-top: 0; }
 }
 .hero-rotator video { position: absolute; inset: 0; }
 @media (min-width: 1000px) and (prefers-reduced-motion: no-preference) {
-  .hero-rotator .slide.active img { animation: hero-kenburns 9.5s ease-out forwards; }
+  /* the zoom runs on the ACTIVE slide and KEEPS running on the outgoing
+     (.leaving) slide for the whole crossfade, so the handoff never shows a
+     scale snap: both images are mid-zoom while the fade happens. Duration
+     covers the slide's time on screen plus the fade tail. */
+  .hero-rotator .slide.active img,
+  .hero-rotator .slide.leaving img { animation: hero-kenburns 10s linear forwards; }
 }
 @keyframes hero-kenburns {
   from { transform: scale(1); }
-  to { transform: scale(1.07); }
+  to { transform: scale(1.065); }
 }
 .hero-scrim {
   position: absolute; inset: 0;

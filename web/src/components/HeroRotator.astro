@@ -68,7 +68,12 @@ const [first, ...rest] = slides;
       const interval = parseInt(hero.dataset.interval || '8000', 10);
       let i = 0;
       setInterval(() => {
-        slides[i].classList.remove('active');
+        const prev = slides[i];
+        // keep the zoom animating on the outgoing slide for the full fade,
+        // then clear it once invisible so it resets for its next turn
+        prev.classList.add('leaving');
+        prev.classList.remove('active');
+        setTimeout(() => prev.classList.remove('leaving'), 1900);
         i = (i + 1) % slides.length;
         slides[i].classList.add('active');
       }, interval);
